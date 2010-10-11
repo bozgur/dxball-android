@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<!--main-->
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical">
+		
+		<!--status bar-->		
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:background="#ff0000">
+		    <TableRow>
+		    	<TextView
+		            android:id="@+id/view_status_level"
+		            android:padding="3dip"/>
+		        <TextView
+		            android:id="@+id/view_status_score"
+		            android:padding="3dip" />
+		        <TextView
+		        	android:id="@+id/view_status_life"		            
+		            android:gravity="right"
+		            android:padding="3dip" />
+		    </TableRow>		    
+		</TableLayout>
+		
+		<!--game view-->
+		<com.mrcongwang.games.dxball.view.DXBallView android:id="@+id/view_game"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" />
+			
+		<!--touchpad view-->
+		<com.mrcongwang.games.dxball.view.TouchpadView android:id="@+id/view_touchpad"
+			android:layout_width="fill_parent"
+			android:layout_height="50px" />
+		
+	</LinearLayout>
+
+	<Button android:id="@+id/btn_start" android:text="@string/start"
+		style="@style/ButtonText" android:visibility="invisible"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal|bottom" />
+
+	<Button android:id="@+id/Button02" android:text="@string/retry"
+		style="@style/ButtonText" android:visibility="invisible"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal|bottom" />
+	
+</FrameLayout>
