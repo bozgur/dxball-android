@@ -1,6 +1,6 @@
 package com.mrcongwang.games.dxball;
 
-import com.mrcongwang.games.dxball.model.DrawableEntity;
+import com.mrcongwang.games.dxball.entities.DrawableEntity;
 
 import android.app.Activity;
 import android.os.Bundle;

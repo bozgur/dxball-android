@@ -12,7 +12,7 @@
 		<!--status bar-->		
 		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
+		    android:layout_height="30px"
 		    android:background="#ff0000">
 		    <TableRow>
 		    	<TextView
@@ -29,12 +29,12 @@
 		</TableLayout>
 		
 		<!--game view-->
-		<com.mrcongwang.games.dxball.view.DXBallView android:id="@+id/view_game"
+		<com.mrcongwang.games.dxball.views.DXBallView android:id="@+id/view_game"
 			android:layout_width="fill_parent"
-			android:layout_height="fill_parent" />
+			android:layout_height="400px" />
 			
 		<!--touchpad view-->
-		<com.mrcongwang.games.dxball.view.TouchpadView android:id="@+id/view_touchpad"
+		<com.mrcongwang.games.dxball.views.TouchpadView android:id="@+id/view_touchpad"
 			android:layout_width="fill_parent"
 			android:layout_height="50px" />
 		

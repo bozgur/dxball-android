@@ -1,17 +1,16 @@
-package com.mrcongwang.games.dxball.model;
+package com.mrcongwang.games.dxball.entities;
 
 import com.mrcongwang.games.dxball.R;
-
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
-public abstract class DrawableEntity extends Entity {
+public abstract class DrawableEntity extends AbstractEntity{
 	
 	protected Bitmap _bitmap;
-	protected int _x;
-	protected int _y;
+	protected float _x;
+	protected float _y;
 	
 	protected int _width;
 	protected int _height;
@@ -19,11 +18,17 @@ public abstract class DrawableEntity extends Entity {
 	protected static Bitmap _bitmap_paddle_mid;
 	protected static Bitmap _bitmap_paddle_long;
 	protected static Bitmap _bitmap_paddle_short;
+	protected static Bitmap _bitmap_ball_normal;
 	
-	public abstract void drawSelf(Canvas c);
+	protected boolean _need_to_redraw = false;
+	
+	public void drawSelf(Canvas c){
+		c.drawBitmap(_bitmap, _x, _y, null);		
+	}
 
 	public static void loadResource(Resources r){
 		_bitmap_paddle_mid = BitmapFactory.decodeResource(r, R.drawable.paddle_mid);
+		_bitmap_ball_normal = BitmapFactory.decodeResource(r, R.drawable.ball_b1);
 		
 	}	
 
@@ -43,19 +48,34 @@ public abstract class DrawableEntity extends Entity {
 		this._height = _height;
 	}
 
-	public int get_x() {
+	public float get_x() {
 		return _x;
 	}
 
-	public void set_x(int _x) {
+	public void set_x(float _x) {
 		this._x = _x;
 	}
 
-	public int get_y() {
+	public float get_y() {
 		return _y;
 	}
 
-	public void set_y(int _y) {
+	public void set_y(float _y) {
 		this._y = _y;
 	}
+	
+	public synchronized boolean isNeedRedraw(){
+		return _need_to_redraw;
+	}
+	
+	public synchronized void needRedraw(){
+		_need_to_redraw = true;
+	}
+	
+	protected void setRectFromBitmap(){
+		_width = _bitmap.getWidth();
+		_height = _bitmap.getHeight();
+	}
+	
+
 }
