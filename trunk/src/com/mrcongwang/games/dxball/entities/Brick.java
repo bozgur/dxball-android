@@ -1,8 +1,8 @@
-package com.mrcongwang.games.dxball.model;
+package com.mrcongwang.games.dxball.entities;
 
 import android.graphics.Canvas;
 
-public class Ball extends DrawableEntity {
+public class Brick extends DrawableEntity {
 
 	@Override
 	public void drawSelf(Canvas c) {
