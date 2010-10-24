@@ -15,6 +15,7 @@ import com.mrcongwang.games.dxball.gamethreads.eventhandlers.HitWallEventHandler
 import com.mrcongwang.games.dxball.gamethreads.eventhandlers.PaddleReflectEventHandler;
 import com.mrcongwang.games.dxball.managers.ConfManager;
 import com.mrcongwang.games.dxball.managers.EntityManager;
+import com.mrcongwang.games.dxball.utils.DateUtils;
 
 public class LogicThread extends GameThread {	
 	
@@ -61,14 +62,16 @@ public class LogicThread extends GameThread {
 	@Override
 	public void run() {
 		while(_running_status == STATUS_RUNNING){
+			long elapsed = DateUtils.getNow().toMillis(true);
 			for(EventHandler h:_eventhandlers){
 				if(h.isInvokable()){
 					h.invoke();
 				}
 			}
-			redraw();			
+			redraw();
+			elapsed = DateUtils.getNow().toMillis(true) - elapsed; 
 			try {
-				sleep(ConfManager.FRAME_DELAY);
+				sleep(ConfManager.FRAME_DELAY - elapsed < 0 ? 0 : ConfManager.FRAME_DELAY - elapsed);
 			} catch (InterruptedException e) {
 				stop();
 			}
